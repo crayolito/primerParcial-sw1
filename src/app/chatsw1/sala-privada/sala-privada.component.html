@@ -1,0 +1,65 @@
+<div class="h-screen w-screen bg-slate-800 flex justify-center items-center">
+  <div class="w-[40%] h-[70%] flex flex-col items-center gap-3">
+    <section class="flex flex-row gap-5 items-center justify-center">
+      <h1 class="font-google-suse font-bold text-4xl text-white">
+        SALA PRIVADA
+      </h1>
+      @if(getUserPrincipal()){
+      <img src="assets/online.svg" alt="" class="h-10 w-10" />
+      }@else {
+      <img src="assets/offline.svg" alt="" class="h-10 w-10" />
+      }
+    </section>
+
+    <!-- LISTA DE USUARIOS -->
+    <h1 class="font-google-suse font-bold text-4xl text-white">
+      LISTA DE USUARIOS
+    </h1>
+    <section
+      class="w-[450px] h-[200px] overflow-y-auto px-3 rounded-xl border-4 border-b-white"
+    >
+      <ul class="list-disc p-4 text-white font-google-suse">
+        @for(usuario of listaUsuariosConectados ; track listaUsuariosConectados)
+        { @if(usuario.id == salaSw1Service.usuario().id){
+        <li class="border-b">YO : {{ usuario.nombre }}</li>
+        }@else{
+        <li class="border-b">{{ usuario.id }} - {{ usuario.nombre }}</li>
+        } }
+      </ul>
+    </section>
+
+    <!-- EVENTOS  -->
+    <h1 class="font-google-suse font-bold text-4xl text-white">EVENTOS</h1>
+    <section class="flex flex-row gap-3">
+      <input
+        type="text"
+        placeholder="Escriba id sala"
+        class="h-[100%] rounded-md text-2xl font-google-suse px-2"
+        [(ngModel)]="inputEvento"
+      />
+      <button
+        (click)="addEvento()"
+        class="h-[100%] flex items-center border-4 border-b-white rounded-xl p-2"
+      >
+        <p class="font-bold font-google-suse text-xl text-white">Añadir</p>
+      </button>
+    </section>
+
+    <section
+      class="w-[450px] h-[200px] overflow-y-auto p-2 rounded-xl border-4 border-b-white"
+    >
+      @for(evento of listaEventosSw1 ; track listaEventosSw1){
+      <div class="flex flex-row gap-2 text-white font-google-suse items-center">
+        <img src="assets/option.svg" alt="" class="h-5 w-5" />
+        <p>{{ evento }}</p>
+        <img
+          src="assets/delete.svg"
+          alt=""
+          class="h-5 w-5"
+          (click)="deleteEvento(evento)"
+        />
+      </div>
+      }
+    </section>
+  </div>
+</div>

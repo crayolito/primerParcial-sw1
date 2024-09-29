@@ -6,9 +6,12 @@
     "types": []
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "node_modules/@joint/plus/index.ts",
+    "node_modules/@joint/format-bpmn-export/dist/joint.format.bpmnExport.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+
 }

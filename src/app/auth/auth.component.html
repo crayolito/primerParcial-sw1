@@ -1,0 +1,274 @@
+<div class="relative w-screen h-screen flex flex-col px-[1%] items-center">
+  <!-- IMAGEN DE FONDO -->
+  <img
+    src="https://i.pinimg.com/originals/35/8c/a0/358ca01c38ccc0cc2954a0fde820485d.jpg"
+    alt=""
+    class="h-[100%] w-[100%] object-cover absolute top-0 left-0 z-[-1]"
+  />
+  <!-- NAVBAR CUSTOM -->
+  <nav
+    class="h-[10%] w-[100%] px-[1%] mt-[1%] -[10%] flex flex-row justify-between border-2 border-white rounded-md bg-gray-800 bg-opacity-70"
+  >
+    <!-- INFORMACION LA PAGINA -->
+    <section class="h-[100%] w-[19%] gap-3 flex flex-row items-center">
+      <button
+        class="flex items-center justify-center hover:bg-slate-50 hover:bg-opacity-20 h-[80%] w-[13%] rounded-md"
+      >
+        <img src="assets/optionsNV.svg" class="h-10 w-10 object-contain" />
+      </button>
+      <img src="assets/logoPaginWeb.png" alt="" class="h-[70%]" />
+      <p class="text-white font-bold text-3xl font-google-suse">FICCT UML</p>
+    </section>
+    <!-- OPCIONES DE CREACION -->
+    <section class="h-[100%] w-[38%] flex flex-row gap-[1%] items-center">
+      <p class="text-white font-bold text-3xl font-google-suse">
+        {{ infoDate() | date : "h:mm" }} ·
+      </p>
+      <p class="text-white font-bold text-3xl font-google-suse">
+        {{ infoDate() | date : "MMM d,y" }}
+      </p>
+      <button
+        class="flex items-center justify-center hover:bg-slate-50 hover:bg-opacity-20 h-[80%] w-[6%] rounded-md"
+      >
+        <img src="assets/option1.svg" class="h-10 w-10 object-contain" />
+      </button>
+      <button
+        class="flex items-center justify-center hover:bg-slate-50 hover:bg-opacity-20 h-[80%] w-[8%] rounded-md"
+      >
+        <img src="assets/option2.svg" class="h-8 w-8 object-cover" />
+      </button>
+      <button
+        class="flex items-center justify-center hover:bg-slate-50 hover:bg-opacity-20 h-[80%] w-[8%] rounded-md"
+      >
+        <img src="assets/option3.svg" class="h-8 w-8 object-cover" />
+      </button>
+      <button
+        class="flex items-center justify-center hover:bg-slate-50 hover:bg-opacity-20 h-[75%] w-[8%] rounded-md"
+      >
+        <img src="assets/option4.svg" class="h-8 w-8 object-cover" />
+      </button>
+      <button
+        (click)="updateViewFormAuth()"
+        [ngClass]="{ 'border-2 border-white p-1': viewFormAuth() }"
+        class="h-[90%] w-[10%] rounded-full"
+      >
+        @if(isAuthenticado()){
+        <img
+          src="assets/userSesion.png"
+          alt=""
+          class="h-[100%] w-[100%] object-contain"
+        />
+        }@else {
+        <img
+          src="assets/userRegister.png"
+          alt=""
+          class="h-[100%] w-[100%] object-contain"
+        />
+        }
+      </button>
+    </section>
+  </nav>
+  <body class="w-[50%] h-[90%] mt-[1.5%] flex flex-col gap-[2%] items-center">
+    <p class="text-white font-bold font-google-suse text-3xl text-center">
+      Reuniones Interactivas para Desarrolladores en Tiempo Real
+    </p>
+    <p class="text-white font-google-suse text-2xl text-center">
+      UML FICCT ofrece trabajo colaborativo de manera segura y sencilla haciendo
+      los diagrama de relaciones
+    </p>
+    <!-- OPTIONS SALA -->
+    <section
+      class="w-[100%] h-[11.5%] flex flex-row items-center justify-center gap-[1.5%]"
+    >
+      <button
+        (click)="emitNuevaReunion()"
+        class="border-2 border-b-white rounded-md p-[1%] h-[80%] flex flex-row gap-1 items-center justify-center"
+      >
+        <img
+          src="assets/nuevaReunion.svg"
+          alt=""
+          class="h-8 w-8 object-cover"
+        />
+        <p class="text-white text-xl font-bold font-google-suse">
+          Nueva Reunion
+        </p>
+      </button>
+      <div
+        class="border-2 border-b-white rounded-md p-[1%] h-[80%] flex flex-row gap-1 items-center justify-center"
+      >
+        <img src="assets/teclado.svg" alt="" class="h-8 w-8 object-cover" />
+        <input
+          [(ngModel)]="inputCodigoSala"
+          type="text"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Introduce un codigo de sala"
+        />
+      </div>
+      <button (click)="emitUnirseReunion()">
+        <p class="bg-transparent text-white text-xl font-google-suse font-bold">
+          Unirme
+        </p>
+      </button>
+    </section>
+    <img
+      src="assets/p1.svg"
+      alt=""
+      class="h-[55$] w-[55%] object-cover mt-[3%]"
+    />
+  </body>
+
+  <!-- FORMUARIO DE REGISTRO -->
+  <section
+    [ngClass]="{
+      hidden: !viewFormAuth(),
+      'h-[26%]': isAuthenticado(),
+      'h-[40%]': viewFormLogin() && !isAuthenticado(),
+      'h-[50%]': !viewFormLogin() && !isAuthenticado()
+    }"
+    class="shadow-custom-auth absolute w-[25%] h-[26%] py-2 bg-gray-800 bg-opacity-80 top-[13%] left-[71%] rounded-md border-2 border-white"
+  >
+    @if(isAuthenticado()){
+    <!-- USUSARIO SESION INICIADA -->
+    <div class="flex flex-col items-center justify-center">
+      <span class="text-2xl text-center text-white font-google-suse">
+        Bienvenido !!! espero disfrutes de los Servicios de UML FICCT <br />
+        <span class="font-bold text-lg font-google-suse">
+          Gracias por confiar en nosotros
+        </span>
+      </span>
+      <button
+        (click)="cerrarSesion()"
+        class="text-white font-bold font-google-suse text-xl hover:bg-slate-50 hover:bg-opacity-20 p-2 rounded-md"
+      >
+        Cerrar Session
+      </button>
+    </div>
+    }@else { @if(viewFormLogin()){
+    <!-- LOGIN -->
+    <form
+      (ngSubmit)="procesoLogin()"
+      [formGroup]="myFormLogin"
+      action=""
+      class="w-full h-full flex flex-col items-center gap-2"
+      autocomplete="off"
+    >
+      <p class="text-2xl font-bold font-google-suse text-white">
+        Iniciar Session
+      </p>
+      <div
+        class="border-2 border-b-white rounded-md h-[30%] w-[92%] flex flex-row gap-3 items-center justify-center"
+      >
+        <img src="assets/email.svg" alt="" class="h-6 w-6 object-cover" />
+        <input
+          formControlName="email"
+          type="text"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Correo Electronico"
+          autocomplete="new-password"
+        />
+      </div>
+      <div
+        class="border-2 border-b-white rounded-md h-[30%] w-[92%] flex flex-row gap-3 items-center justify-center"
+      >
+        <img src="assets/password.svg" alt="" class="h-6 w-6 object-cover" />
+        <input
+          formControlName="password"
+          type="password"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Contraseña"
+        />
+      </div>
+      <button
+        type="submit"
+        class="text-white font-bold font-google-suse text-xl hover:bg-slate-50 hover:bg-opacity-20 p-1 rounded-md"
+      >
+        Entrar
+      </button>
+      <button
+        (click)="changedViewFormLogin()"
+        class="text-white font-google-suse border-b-0 line-clamp-none underline"
+      >
+        Ir a Registrarse!!
+      </button>
+    </form>
+    }@else {
+    <!-- REGISTRO -->
+    <!-- h-[50%] -->
+    <form
+      (ngSubmit)="procesoRegistro()"
+      [formGroup]="myFormRegister"
+      action=""
+      class="w-full h-full flex flex-col items-center gap-2"
+      autocomplete="off"
+    >
+      <p class="text-2xl font-bold font-google-suse text-white">Registrese</p>
+      <div
+        class="border-2 border-b-white rounded-md h-[30%] w-[92%] flex flex-row gap-3 items-center justify-center"
+      >
+        <img src="assets/email.svg" alt="" class="h-6 w-6 object-cover" />
+        <input
+          formControlName="email"
+          type="text"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Correo Electronico"
+          autocomplete="new-password"
+        />
+      </div>
+      <div
+        class="border-2 border-b-white rounded-md h-[30%] w-[92%] flex flex-row gap-3 items-center justify-center"
+      >
+        <img src="assets/password.svg" alt="" class="h-6 w-6 object-cover" />
+        <input
+          formControlName="password"
+          type="password"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Contraseña"
+        />
+      </div>
+      <div
+        class="border-2 border-b-white rounded-md h-[30%] w-[92%] flex flex-row gap-3 items-center justify-center"
+      >
+        <img src="assets/password.svg" alt="" class="h-6 w-6 object-cover" />
+        <input
+          formControlName="passwordConfirm"
+          type="password"
+          class="bg-transparent text-white text-xl font-google-suse outline-none"
+          placeholder="Confirmar Contraseña"
+        />
+      </div>
+      <button
+        type="submit"
+        class="text-white font-bold font-google-suse text-xl hover:bg-slate-50 hover:bg-opacity-20 p-1 rounded-md"
+      >
+        Guardar
+      </button>
+      <button
+        (click)="changedViewFormLogin()"
+        class="text-white font-google-suse border-b-0 line-clamp-none underline"
+      >
+        Ir a Iniciar Session!!
+      </button>
+    </form>
+    } }
+  </section>
+
+  <!-- SHOW MESSAGE CLIENTE -->
+  <div
+    #modalCustomHTML
+    [ngClass]="{ hidden: !modalCustomView() }"
+    class="flex items-center justify-center w-screen h-screen absolute bg-black bg-opacity-60"
+  >
+    <div
+      class="items-center justify-center gap-3 p-[0.5%] flex flex-col shadow-white bg-white w-[25%] border-2 border-black rounded-md"
+    >
+      <p class="text-black font-bold text-2xl font-google-suse text-center">
+        {{ messageModalCustom() }}
+      </p>
+      <img
+        src="assets/mensajeError.png"
+        alt=""
+        class="h-12 w-12 object-contain"
+      />
+    </div>
+  </div>
+</div>

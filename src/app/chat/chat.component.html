@@ -1,0 +1,40 @@
+<div class="h-screen w-screen bg-slate-800 flex justify-center items-center">
+  <div class=" w-[30%] h-[70%] flex flex-col items-center gap-3">
+    <section class="flex flex-row gap-5">
+      <h1 class="font-google-suse-suse font-bold text-4xl text-white">CHAT GENERAL</h1>
+      @if(estadoConexionSocket()){
+        <img src="assets/online.svg" alt="" class="h-10 w-10">
+      }@else {
+        <img src="assets/offline.svg" alt="" class="h-10 w-10">
+      }
+    </section>
+
+    <section class="w-[70%] h-[5%] flex flex-row items-center justify-center">
+    <!-- NOMBRE DEL USUARIO -->
+      <p class="text-white text-3xl font-google-suse mr-2">Nombre : </p>
+      <input type="text" placeholder="Escriba su nombre" class="h-[100%] text-2xl font-google-suse" [(ngModel)]="valueInputName">
+      <button (click)="iniciarSesion()" class="m-4 border-4 border-b-white rounded-xl p-1">
+        <img src="assets/initSession.svg" alt="" class="h-8 w-8">
+      </button>
+    </section>
+
+    <!-- LISTA DE USUARIOS -->
+    <h1 class="font-google-suse-suse font-bold text-4xl text-white">LISTA DE USUARIOS</h1>
+    <section class=" w-[450px] h-[200px] overflow-y-auto p-2">
+      <ul class="list-disc p-4 text-white font-google-suse">
+        @for(usuario of serviceChat.usuariosConectados ; track serviceChat.usuariosConectados){
+          @if(usuario.id == userPrincipal.id){
+            <li class="p-2 border-b">YO : {{usuario.nombre}}</li>
+          }@else {
+            <li class="p-2 border-b">{{usuario.id}} - {{usuario.nombre}}</li>
+          }
+        }
+      </ul>
+    </section>
+
+    <!-- MENSAJES -->
+    <h1 class="font-google-suse-suse font-bold text-4xl text-white">MENSAJES</h1>
+    <section class=" w-[50%] h-[55%] border-4 border-b-white rounded-2xl"></section>
+
+  </div>
+</div>

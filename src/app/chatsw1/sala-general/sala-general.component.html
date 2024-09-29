@@ -1,0 +1,65 @@
+<div class="h-screen w-screen bg-slate-800 flex justify-center items-center">
+  <div class="w-[40%] h-[40%] flex flex-col items-center gap-3">
+    <section class="flex flex-row gap-5 items-center justify-center">
+      <h1 class="font-google-suse font-bold text-4xl text-white">
+        SALA GENERAL
+      </h1>
+      @if(getEstadoConexionSocket()){
+      <img src="assets/online.svg" alt="" class="h-10 w-10" />
+      }@else {
+      <img src="assets/offline.svg" alt="" class="h-10 w-10" />
+      }
+    </section>
+
+    <!-- NOMBRE DEL USUARIO -->
+    <section class="w-[70%] h-[15%] flex flex-row items-center justify-center">
+      <p class="text-white text-3xl font-google-suse mr-2">Nombre :</p>
+      <input
+        type="text"
+        placeholder="Escriba su nombre"
+        class="h-[100%] rounded-md text-2xl font-google-suse"
+        [(ngModel)]="inputName"
+      />
+    </section>
+
+    <!-- OPTIONS DE LA SALA -->
+    <section class="flex flex-row h-[17%] gap-3">
+      <button
+        (click)="iniciarSesion()"
+        class="h-[100%] flex items-center border-4 border-b-white rounded-xl p-2"
+      >
+        <p class="font-bold font-google-suse text-xl text-white">Crear Sala</p>
+      </button>
+      <input
+        type="text"
+        placeholder="Escriba id sala"
+        class="h-[100%] rounded-md text-2xl font-google-suse"
+        [(ngModel)]="inputSala"
+      />
+      <button
+        (click)="iniciarMedianteIdSala()"
+        class="h-[100%] flex items-center border-4 border-b-white rounded-xl p-2"
+      >
+        <p class="font-bold font-google-suse text-xl text-white">Unirme</p>
+      </button>
+    </section>
+
+    <!-- LISTA DE USUARIOS -->
+    <!-- <h1 class="font-google-suse font-bold text-4xl text-white">LISTA DE USUARIOS</h1>
+    <section class=" w-[450px] h-[200px] overflow-y-auto p-2 rounded-xl border-4 border-b-white">
+      <ul class="list-disc p-4 text-white font-google-suse">
+        @for(usuario of chatSalaService.usuariosConectados ; track chatSalaService.usuariosConectados){
+          @if(usuario.id == userPrincipal.id){
+            <li class="p-2 border-b ">YO : {{usuario.nombre}}</li>
+          }@else{
+            <li class="p-2 border-b">{{usuario.id}} - {{usuario.nombre}}</li>
+          }
+        }
+      </ul>
+    </section> -->
+
+    <!-- EVENTOS -->
+    <!-- <h1 class="font-google-suse font-bold text-4xl text-white">EVENTOS</h1>
+    <section class=" w-[50%] h-[40%] border-4 border-b-white rounded-2xl"></section> -->
+  </div>
+</div>

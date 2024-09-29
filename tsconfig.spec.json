@@ -10,5 +10,11 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "files": [
+    "node_modules/@joint/plus/index.ts",
+    "node_modules/@joint/format-bpmn-export/dist/joint.format.bpmnExport.d.ts"
+
+
+]
 }

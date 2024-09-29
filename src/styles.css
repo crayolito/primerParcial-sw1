@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=SUSE&display=swap');
+@import "@joint/plus/joint-plus.css";
+@import "./css/style.css";
+@import "./css/style.modern.css";
+@import "./css/style.dark.css";
+@import "./css/style.material.css";
+@import "./css/theme-picker.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
