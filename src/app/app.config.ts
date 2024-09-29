@@ -6,7 +6,7 @@ import {
   withViewTransitions,
 } from '@angular/router';
 
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
       withRouterConfig(routerOptions)
     ),
-    importProvidersFrom(HttpClientModule, SocketIoModule.forRoot(config)),
+    provideHttpClient(),
+    importProvidersFrom(SocketIoModule.forRoot(config)),
   ],
 };
