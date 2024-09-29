@@ -1,0 +1,17 @@
+[build]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "dist/client-socket"
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "dist/client-socket"
+
+[context.branch-deploy]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "dist/client-socket"
+
+[context.next.environment]
+  NODE_ENV = "development"
