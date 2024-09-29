@@ -39,12 +39,10 @@ export class StencilService {
       //   '*': ['type', 'attrs/root/dataTooltip', 'attrs/label/text'],
       // },
       layout: {
-        columns: 1,
-        marginX: 20,
-        marginY: 10,
-        // columnGap: 10,
-        // columnWidth: 100,
-        rowHeight: 120,
+        columns: 1, // Número de columnas, 1 para alinear elementos uno detrás de otro
+        marginX: 20, // Margen horizontal entre los elementos
+        marginY: 10, // Margen vertical entre los elementos
+        rowHeight: 150, // Altura de cada fila
       },
       // Remove tooltip definition from clone
       dragStartClone: (cell: dia.Cell) =>
@@ -94,7 +92,7 @@ export class StencilService {
                 height: -20,
                 ellipsis: true,
               },
-              fill: '#c6c7e2',
+              fill: '#FFFFFF',
               fontFamily: 'Averia Libre',
               fontWeight: 'Bold',
               fontSize: 11,
@@ -103,7 +101,7 @@ export class StencilService {
             },
             headerText: {
               text: 'tituloClase',
-              fill: '#f6f6f6',
+              fill: '#000000',
               fontFamily: 'Averia Libre',
               fontWeight: 'Bold',
               fontSize: 11,
@@ -141,7 +139,7 @@ export class StencilService {
                 height: -20,
                 ellipsis: true,
               },
-              fill: '#c6c7e2',
+              fill: '#FFFFFF',
               fontFamily: 'Averia Libre',
               fontWeight: 'Bold',
               fontSize: 11,
@@ -151,6 +149,53 @@ export class StencilService {
             headerText: {
               text: 'tituloClase1_tituloClase2',
               fill: '#000000',
+              fontFamily: 'Averia Libre',
+              fontWeight: 'Bold',
+              fontSize: 11,
+              strokeWidth: 0,
+              y: 10,
+            },
+          },
+        },
+        {
+          type: 'standard.HeaderedRectangle',
+          size: { width: 200, height: 170 },
+          attrs: {
+            root: {
+              dataTooltip: 'Rectangle with header',
+              dataTooltipPosition: 'left',
+              dataTooltipPositionSelector: '.joint-stencil',
+            },
+            body: {
+              fill: 'transparent',
+              stroke: '#c237DB',
+              strokeWidth: 2,
+              strokeDasharray: '0',
+            },
+            header: {
+              stroke: '#c237DB',
+              fill: '#c237DB',
+              strokeWidth: 2,
+              strokeDasharray: '0',
+              height: 25,
+            },
+            bodyText: {
+              textWrap: {
+                text: 'VARCHAR(n) / TEXT => String\n CHAR(n) => String\n INTEGER => Long\n SERIAL => Long\n BIGINT => Long\n SMALLINT => Long\n NUMERIC(p, s) => BigDecimal\n DECIMAL(p, s) => BigDecimal\n REAL => Float\n DOUBLE PRECISION => Double',
+                width: -10,
+                height: -20,
+                ellipsis: true,
+              },
+              fill: '#FFFFFF',
+              fontFamily: 'Averia Libre',
+              fontWeight: 'Bold',
+              fontSize: 11,
+              strokeWidth: 0,
+              y: 'calc(h/2 + 10)',
+            },
+            headerText: {
+              text: 'Tipos de Datos\nPostgreSQL => Spring Boot',
+              fill: '#FFFFFF',
               fontFamily: 'Averia Libre',
               fontWeight: 'Bold',
               fontSize: 11,

@@ -35,46 +35,22 @@ export class ToolbarService {
   getToolbarConfig() {
     return {
       groups: {
-        'undo-redo': { index: 1 },
-        clear: { index: 2 },
-        xmlImportar: { index: 3 },
-        xmlExportar: { index: 4 },
-        jsonImportar: { index: 5 },
-        jsonExportar: { index: 6 },
-        importar: { index: 7 },
-        fullscreen: { index: 8 },
-        order: { index: 9 },
-        layout: { index: 10 },
-        zoom: { index: 11 },
-        grid: { index: 12 },
-        snapline: { index: 13 },
+        clear: { index: 1 },
+        qr: { index: 2 },
+        springBoot: { index: 3 },
+        xmlImportar: { index: 4 },
+        xmlExportar: { index: 5 },
+        jsonImportar: { index: 6 },
+        jsonExportar: { index: 7 },
+        importar: { index: 8 },
+        fullscreen: { index: 9 },
+        order: { index: 10 },
+        layout: { index: 11 },
+        zoom: { index: 12 },
+        grid: { index: 13 },
+        snapline: { index: 14 },
       },
-
       tools: [
-        {
-          type: 'undo',
-          name: 'undo',
-          group: 'undo-redo',
-          attrs: {
-            button: {
-              'data-tooltip': 'Undo',
-              'data-tooltip-position': 'top',
-              'data-tooltip-position-selector': '.toolbar-container',
-            },
-          },
-        },
-        {
-          type: 'redo',
-          name: 'redo',
-          group: 'undo-redo',
-          attrs: {
-            button: {
-              'data-tooltip': 'Redo',
-              'data-tooltip-position': 'top',
-              'data-tooltip-position-selector': '.toolbar-container',
-            },
-          },
-        },
         {
           type: 'button',
           name: 'clear',
@@ -83,6 +59,20 @@ export class ToolbarService {
             button: {
               id: 'btn-clear',
               'data-tooltip': 'Clear Paper',
+              'data-tooltip-position': 'top',
+              'data-tooltip-position-selector': '.toolbar-container',
+            },
+          },
+        },
+        {
+          type: 'button',
+          name: 'qr',
+          group: 'qr',
+          text: 'QR',
+          attrs: {
+            button: {
+              id: 'btn-qr',
+              'data-tooltip': '.qr',
               'data-tooltip-position': 'top',
               'data-tooltip-position-selector': '.toolbar-container',
             },
@@ -144,89 +134,20 @@ export class ToolbarService {
             },
           },
         },
-        // {
-        //     type: 'button',
-        //     name: 'svg',
-        //     group: 'export',
-        //     text: 'Export SVG',
-        //     attrs: {
-        //         button: {
-        //             id: 'btn-svg',
-        //             'data-tooltip': 'Open as SVG in a pop-up',
-        //             'data-tooltip-position': 'top',
-        //             'data-tooltip-position-selector': '.toolbar-container'
-        //         }
-        //     }
-        // },
-        // {
-        //     type: 'button',
-        //     name: 'png',
-        //     group: 'export',
-        //     text: 'Export PNG',
-        //     attrs: {
-        //         button: {
-        //             id: 'btn-png',
-        //             'data-tooltip': 'Open as PNG in a pop-up',
-        //             'data-tooltip-position': 'top',
-        //             'data-tooltip-position-selector': '.toolbar-container'
-        //         }
-        //     }
-        // },
-        // {
-        //     type: 'button',
-        //     name: 'print',
-        //     group: 'print',
-        //     attrs: {
-        //         button: {
-        //             id: 'btn-print',
-        //             'data-tooltip': 'Open a Print Dialog',
-        //             'data-tooltip-position': 'top',
-        //             'data-tooltip-position-selector': '.toolbar-container'
-        //         }
-        //     }
-        // },
-        // {
-        //     type: 'button',
-        //     name: 'to-front',
-        //     group: 'order',
-        //     text: 'Send To Front',
-        //     attrs: {
-        //         button: {
-        //             id: 'btn-to-front',
-        //             'data-tooltip': 'Bring Object to Front',
-        //             'data-tooltip-position': 'top',
-        //             'data-tooltip-position-selector': '.toolbar-container'
-        //         }
-        //     }
-        // },
-        // {
-        //     type: 'button',
-        //     name: 'to-back',
-        //     group: 'order',
-        //     text: 'Send To Back',
-        //     attrs: {
-        //         button: {
-        //             id: 'btn-to-back',
-        //             'data-tooltip': 'Send Object to Back',
-        //             'data-tooltip-position': 'top',
-        //             'data-tooltip-position-selector': '.toolbar-container'
-        //         }
-        //     }
-        // },
-        // {
-        //   type: 'button',
-        //   group: 'layout',
-        //   name: 'layout',
-        //   attrs: {
-        //     button: {
-        //       id: 'btn-layout',
-        //       'data-tooltip': 'Auto-layout Graph',
-        //       'data-tooltip-position': 'top',
-        //       'data-tooltip-position-selector': '.toolbar-container',
-        //     },
-        //   },
-        // },
-
+        {
+          type: 'button',
+          name: 'springBoot',
+          group: 'springBoot',
+          text: 'Spring Boot',
+          attrs: {
+            button: {
+              id: 'btn-springBoot',
+              'data-tooltip': 'Generar Backend Spring Boot',
+              'data-tooltip-position': 'top',
+              'data-tooltip-position-selector': '.toolbar-container',
+            },
+          },
+        },
         {
           type: 'zoom-to-fit',
           name: 'zoom-to-fit',

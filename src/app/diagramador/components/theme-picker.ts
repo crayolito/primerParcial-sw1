@@ -37,29 +37,30 @@ export class ThemePicker extends joint.ui.Toolbar {
   mainView: ThemePicker.MainView;
 
   override init() {
-    const options = [
-      { value: 'modern', content: 'Modern' },
-      { value: 'dark', content: 'Dark' },
-      { value: 'material', content: 'Material' },
-    ];
+    // READ : OPCIONES DE LOS DIFERENTES TEMAS PARA ESCOGER POR EL USUARIO
+    // const options = [
+    //   { value: 'modern', content: 'Modern' },
+    //   { value: 'dark', content: 'Dark' },
+    //   { value: 'material', content: 'Material' },
+    // ];
 
-    const themes = {
-      type: 'select-button-group',
-      name: 'theme-picker',
-      multi: false,
-      selected: options.findIndex(
-        (option) => option.value === this.defaultTheme
-      ),
-      options,
-      attrs: {
-        '.joint-select-button-group': {
-          'data-tooltip': 'Change Theme',
-          'data-tooltip-position': 'bottom',
-        },
-      },
-    };
+    // const themes = {
+    //   type: 'select-button-group',
+    //   name: 'theme-picker',
+    //   multi: false,
+    //   selected: options.findIndex(
+    //     (option) => option.value === this.defaultTheme
+    //   ),
+    //   options,
+    //   attrs: {
+    //     '.joint-select-button-group': {
+    //       'data-tooltip': 'Change Theme',
+    //       'data-tooltip-position': 'bottom',
+    //     },
+    //   },
+    // };
 
-    this.options.tools = [themes];
+    // this.options.tools = [themes];
     this.on('theme-picker:option:select', this.onThemeSelected, this);
 
     super.init();
